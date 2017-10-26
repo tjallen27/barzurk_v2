@@ -1,0 +1,65 @@
+<button class="btn go_back_btn">Go Back</button>
+<div class="container">
+
+  <h1 class="user_show_header"><%= user.pubName %></h1>
+
+<div class="row">
+  <div class="col-6 col-md-3">
+  <ul class="user-address">
+    <li><h5>Address:</h5></li>
+    <li><p><%- user.address.streetNumber %>,</p></li>
+    <li><p><%- user.address.street %>,</p></li>
+    <li><p><%- user.address.city %>,</p></li>
+    <li><p><%- user.address.postcode %></p></li>
+    <li><br></li>
+  </ul>
+  </div>
+  <div class="col-6 col-md-3">
+    <ul>
+      <li><h5>Contact:</h5></li>
+      <li><p>t: <%= user.phone %></p></li>
+      <li><p class="user_show_contact">e: <%= user.email %></p></li>
+    </ul>
+  </div>
+</div>
+
+  <% if(!locals.isAuthenticated) { %>
+    <h5>Looking for...</h5>
+  <% } %>
+
+  <% if(locals.isAuthenticated) { %>
+    <h5>Your Jobs:</h5>
+  <% } %>
+
+  <div class="row ">
+    <% jobs.forEach((job) => { %>
+      <ul class="col-md-12 col-lg-6 job">
+        <li>
+
+          <a href="/jobs/<%= job.id %>"><h3><%= job.title %></h3></a>
+          <p class="job-desc"><%= job.description %></p>
+          <p>£<%= job.rate %>/ph</p>
+
+          <% if(locals.isAuthenticated && job.ownedBy(user)) { %>
+          <a href="/jobs/<%= job.id %>/edit" class="button">
+            <button class="btn btn-primary">Edit</button>
+          </a>
+          <form action="/jobs/<%= job.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button class="btn btn-primary">Delete</button>
+            <% } %>
+          </form>
+        </li>
+        </ul>
+    <% }); %>
+  </div>
+    <% if(locals.isAuthenticated) { %>
+  <ul>
+    <li>
+      <a href="/jobs/new" class="button">
+        <button class="btn btn-primary add_job_btn">Add New Job</button>
+      </a>
+    </li>
+  </ul>
+  <% } %>
+</div>

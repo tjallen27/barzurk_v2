@@ -1,0 +1,23 @@
+<button class="btn go_back_btn">Go Back</button>
+  <div class="container">
+  <h1>Post a new job</h1>
+
+  <form method="POST" action="/jobs">
+    <div class="form-group row">
+      <div class="col-lg-12">
+        <label for="title">Title</label>
+        <select class="title_dropdown"  name="title" id="title">
+          <option value="Bar staff">Bar staff</option>
+          <option value="Chef">Chef</option>
+          <option value="Waiter">Waiter</option>
+          <option value="Kitchen porter">Kitchen porter</option>
+        </select><br>
+        <label for="description">Description</label>
+        <textarea name="description" class="form-control col-md-4"></textarea>
+        <label for="rate">Rate (£/ph)</label>
+        <input type="number" name="rate" id="rate" class="form-control col-md-4">
+      </div>
+    </div>
+    <button class="btn btn-primary">Create</button>
+  </form>
+</div>

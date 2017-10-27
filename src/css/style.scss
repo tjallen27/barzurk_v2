@@ -91,6 +91,7 @@ main {
   position: absolute;
   left: 50%;
   top: 50%;
+  transform: translate(-50%);
   z-index: -999;
 }
 
@@ -507,6 +508,8 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
         overflow: hidden;
         padding: 8px 15px;
         transition: all .5s;
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 200;
 
         &:hover:before,
          &:focus:before,

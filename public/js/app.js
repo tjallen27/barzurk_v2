@@ -1,16 +1,16 @@
 'use strict';
 
 /* global google:ignore mapStyles:ignore*/
+
 $(function () {
-
-  console.log('JS loaded!');
-
   //  FULL PAGE MENU ACTIVE //
   $('#btn').click(function () {
     $(this).toggleClass('active');
     $('#menu').toggleClass('open');
     $('main').toggleClass('hide');
   });
+
+  console.log('JS loaded!');
 
   var $map = $('#map');
   var map = null;

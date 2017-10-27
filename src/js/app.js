@@ -1,15 +1,14 @@
 /* global google:ignore mapStyles:ignore*/
+
 $(()=>{
-
-  console.log('JS loaded!');
-
-
   //  FULL PAGE MENU ACTIVE //
   $('#btn').click(function() {
     $(this).toggleClass('active');
     $('#menu').toggleClass('open');
     $('main').toggleClass('hide');
   });
+
+  console.log('JS loaded!');
 
   const $map = $('#map');
   let map = null;

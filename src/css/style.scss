@@ -53,6 +53,7 @@ body {
 .landing-header {
   text-align: center;
   padding-top: 15vh;
+  z-index: 0;
   h1 {
     background: url('../assets/images/home_text7.jpg');
     background-size: cover;
@@ -424,6 +425,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
   display: none;
 }
 .menu {
+  z-index: 1;
   position: fixed;
   top: 0;
   right: 0;
@@ -432,7 +434,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
   opacity: 1;
   visibility: hidden;
   overflow: hidden;
-  transition: opacity .5s, visibility .35s, width .35s;
+  transition: opacity 1s, visibility 1s, width 1s;
 
 
   &:after {
@@ -444,7 +446,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
     height: 200%;
     position: fixed;
     border-radius: 100%;
-    transition: all .35s ease;
+    transition: all 1s ease;
   }
 
   &.open {
@@ -510,15 +512,6 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
         transition: all .5s;
         font-family: 'Work Sans', sans-serif;
         font-weight: 200;
-
-        &:hover:before,
-         &:focus:before,
-         &:active:before {
-           width: 120%;
-           height: 200%;
-           border-radius: 100%;
-           visibility: visible;
-         }
 
         &:before {
           content: '';

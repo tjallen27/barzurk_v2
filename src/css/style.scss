@@ -39,20 +39,6 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
 ::-webkit-scrollbar {
   display: none;
 }
-
-body {
-	background-color: $inverse-color;
-}
-/*** typography ***/
-.title {
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin: 25px 0;
-}
-
-.simple-text {
-  letter-spacing: .025em;
-}
 /*** navbar ***/
 .navbar-brand {
   height: 100%;
@@ -64,14 +50,12 @@ body {
     font-size: 35px;
     text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.16);
     color: $int-color;
-
     &:nth-of-type(1) {
       color: $main-color;
     }
   }
 
   &:hover {
-
     span {
       text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.5);
     }
@@ -81,8 +65,6 @@ body {
 .navbar-default {
   min-height: $navbar-height;
   border: 0;
-  background-color: orange;
-  box-shadow: $shadow;
 }
 
 
@@ -104,7 +86,7 @@ body {
 
   &:after {
     content: '';
-    background: $main-color;
+    background: rgba(10, 250, 150, 1);
     right: -200%;
     top: -200%;
     width: 200%;
@@ -234,7 +216,7 @@ body {
     right: 20px;
     width: $width-span;
     height: $height-span;
-    background-color: $main-color;
+    background-color: rgba(10, 250, 150, 1);
     transition: all .35s;
     box-shadow: $shadow;
     z-index: 50;
@@ -362,15 +344,12 @@ main {
   }
 
   .div-gradient {
-
     & .img-gradient {
       background-position: 50% 0px !important;
     }
-
     & .gradient {
     }
   }
-
 }
 
 @keyframes fadeInRight {

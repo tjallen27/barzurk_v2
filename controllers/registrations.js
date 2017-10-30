@@ -20,11 +20,12 @@ function createRoute(req, res, next) {
     req.body.address.lng = response.results[0].geometry.location.lng;
     console.log(response);
     User
-      .create(req.body)
+      .create(req.body.user)
       .then(() => res.redirect('/login'))
       .catch((err) => {
         if(err.name === 'ValidationError') {
           req.flash('alert', 'Passwords do not match');
+          console.log(User);
           return res.redirect('/register');
         }
         next();

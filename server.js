@@ -18,20 +18,28 @@ const authentication = require('./lib/authentication');
 // Create express app
 const app = express();
 
+// Parse incoming requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Set up our static files folder
+app.use(express.static(`${__dirname}/public`));
+
 // Set up out template engine
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(expressLayouts);
 
-// Set up our static files folder
-app.use(express.static(`${__dirname}/public`));
-
 // Connect to our database
-mongoose.connect(dbURI);
+mongoose.connect('mongodb://localhost:27017/barzurk');
+let db = mongoose.connection;
+
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
 
 // Set up our middleware
 if(env !== 'test') app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride((req)=>{
   if(req.body && typeof req.body === 'object' && '_method' in req.body){
     const method = req.body._method;

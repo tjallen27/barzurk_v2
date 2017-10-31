@@ -18,28 +18,24 @@ const authentication = require('./lib/authentication');
 // Create express app
 const app = express();
 
-// Parse incoming requests
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Set up our static files folder
-app.use(express.static(`${__dirname}/public`));
+app.get('/', function(req, res) {
+  res.send('Hello! The API is at http://localhost:' + port + '/api');
+});
 
 // Set up out template engine
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(expressLayouts);
 
-// Connect to our database
-mongoose.connect('mongodb://localhost:27017/barzurk');
-let db = mongoose.connection;
+// Set up our static files folder
+app.use(express.static(`${__dirname}/public`));
 
-db.once('open', function(){
-  console.log('Connected to MongoDB');
-});
+// Connect to our database
+mongoose.connect(dbURI);
 
 // Set up our middleware
 if(env !== 'test') app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride((req)=>{
   if(req.body && typeof req.body === 'object' && '_method' in req.body){
     const method = req.body._method;
@@ -52,7 +48,7 @@ app.use(methodOverride((req)=>{
 // Set up sessions
 app.use(session({
   secret: sessionSecret,
-  resave: true,
+  resave: false,
   saveUninitialized: false
 }));
 

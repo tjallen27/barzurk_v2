@@ -1,3 +1,4 @@
+
 const User = require('../models/user');
 
 function sessionsNew(req, res) {
@@ -18,15 +19,12 @@ function sessionsCreate(req, res, next) {
 
       req.user = user;
 
-      req.flash('success', `Welcome back, ${user.username}!`);
-      res.redirect('/account');
+      res.redirect(`/users/${user.id}`);
     })
     .catch(next);
 }
 
 function sessionsDelete(req, res) {
-  console.log(`${req.session}`);
-  console.log(`${res}`);
   req.session.regenerate(() => res.redirect('/'));
 }
 

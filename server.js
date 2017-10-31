@@ -18,10 +18,6 @@ const authentication = require('./lib/authentication');
 // Create express app
 const app = express();
 
-app.get('/', function(req, res) {
-  res.send('Hello! The API is at http://localhost:' + port + '/api');
-});
-
 // Set up out template engine
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);

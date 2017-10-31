@@ -1,8 +1,9 @@
-//Require our node packages
+// require our packages
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+// use bluebird to be the promise library for mongoose
 mongoose.Promise = require('bluebird');
 const session = require('express-session');
 const flash = require('express-flash');
@@ -14,51 +15,53 @@ const routes = require('./config/routes');
 const customResponses = require('./lib/customResponses');
 const authentication = require('./lib/authentication');
 
-
-// Create express app
+//create an expres app
 const app = express();
 
-// Set up out template engine
+// set up our templates engine (views)
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(expressLayouts);
 
-// Set up our static files folder
+//set up out static files folder
+// first look in public folder for target, then look at routes
 app.use(express.static(`${__dirname}/public`));
 
-// Connect to our database
+// create a database connection with mongoose
 mongoose.connect(dbURI);
 
-// Set up our middleware
+//set up the middleware
+// body parser
 if(env !== 'test') app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride((req)=>{
-  if(req.body && typeof req.body === 'object' && '_method' in req.body){
+app.use(methodOverride((req) => {
+  if(req.body && typeof req.body === 'object' && '_method' in req.body) {
     const method = req.body._method;
-    delete req.body._method;
+    delete req.body._method; // so it doesn't get passed to the controllers
 
     return method;
   }
 }));
 
-// Set up sessions
+// set up our sesstions
 app.use(session({
   secret: sessionSecret,
   resave: false,
   saveUninitialized: false
 }));
 
-// Set up flash messages AFTER sessions
+// set up flash messages AFTER sessions so it can reference the session
 app.use(flash());
 
-// Set up custom middleware
+// use customResponses for handling error pages.
 app.use(customResponses);
 app.use(authentication);
 
-// Set up our routes -- just before our error handler
+// routes, just before the error handler
 app.use(routes);
 
-// Set up our error handler -- our LAST piece of middleware
+// set up the error handler - the LAST piece of middle ware.
 app.use(errorHandler);
 
+//test
 app.listen(port, () => console.log(`express is listening to port ${port}`));

@@ -1,10 +1,10 @@
-
 const User = require('../models/user');
 
 function sessionsNew(req, res) {
   res.render('sessions/new');
 }
 
+// creates the login cookie
 function sessionsCreate(req, res, next) {
   User
     .findOne({ email: req.body.email })
@@ -15,14 +15,17 @@ function sessionsCreate(req, res, next) {
       }
 
       req.session.userId = user.id;
-      req.session.isAuthenticated = true;
 
+      req.session.isAuthenticated = true;
       req.user = user;
 
+      req.flash('success', `Welcome back, ${user.username}!`);
       res.redirect(`/users/${user.id}`);
     })
     .catch(next);
 }
+
+///users/<user.id>
 
 function sessionsDelete(req, res) {
   req.session.regenerate(() => res.redirect('/'));

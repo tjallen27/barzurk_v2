@@ -51,26 +51,29 @@ body {
 }
 
 .landing-header {
+  background: rgba(10, 250, 150, 1);
+  background-size: cover;
   text-align: center;
-  padding-top: 15vh;
-  z-index: 0;
+  z-index: 9;
+  height: 100vh;
+  .landing-container {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%);
+  }
   h1 {
-    background: url('../assets/images/home_text7.jpg');
-    background-size: cover;
-    font-size: 15em;
-    font-weight: bold;
-    color: transparent;
-    font-family: 'Special Elite', cursive;
-    -webkit-font-smoothing:antialiased;
-    -webkit-background-clip:text;
-    -moz-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
+    font-size: 5em;
+    color: #fff;
+    font-weight: lighter;
   }
   h3 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: lighter;
     letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
   }
 }
 

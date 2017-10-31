@@ -20,16 +20,16 @@ function createRoute(req, res, next) {
     req.body.address.lng = response.results[0].geometry.location.lng;
     console.log(response);
     User
-      .create(req.body.user)
-      .then(() => res.redirect('/login'))
-      .catch((err) => {
-        if(err.name === 'ValidationError') {
-          req.flash('alert', 'Passwords do not match');
-          console.log(User);
-          return res.redirect('/register');
-        }
-        next();
-      });
+    .create(req.body)
+    .then((user) => {
+      res.redirect('/');
+    })
+    .catch((err) => {
+      if(err.name === 'ValidationError') {
+        return res.status(400).render('registrations/new', { message: 'Passwords do not match' });
+      }
+      res.status(500).end();
+    });
   })
   .catch(next);
 }

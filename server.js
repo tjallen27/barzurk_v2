@@ -52,7 +52,7 @@ app.use(methodOverride((req)=>{
 // Set up sessions
 app.use(session({
   secret: sessionSecret,
-  resave: false,
+  resave: true,
   saveUninitialized: false
 }));
 

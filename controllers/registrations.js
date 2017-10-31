@@ -17,17 +17,9 @@ function createRoute(req, res, next) {
   }).then((response) => {
     req.body.address.lat = response.results[0].geometry.location.lat;
     req.body.address.lng = response.results[0].geometry.location.lng;
-    console.log(response);
     User
    .create(req.body)
-   .then((user) => {
-     req.session.userId = user.id;
-     req.session.isAuthenticated = true;
-     req.user = user;
-
-     req.flash('success', `Welcome back, ${user.username}!`);
-     res.redirect(`/users/${user.id}`);
-   })
+   .then(() => res.redirect(`/login`))
    .catch((err) => {
      if(err.name === 'ValidationError') {
        req.flash('alert', 'Passwords do not match');

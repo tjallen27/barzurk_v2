@@ -369,7 +369,7 @@ $main-color-inverse: #3B305F;
 $trasparent-color: rgba(255,255,255,.1);
 $inverse-color: rgba(59, 48, 95,1);
 
-$def-color: #FFF;
+$def-color: transparent;
 $int-color: #777;
 $act-color: #444;
 
@@ -449,7 +449,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
     height: 200%;
     position: fixed;
     border-radius: 100%;
-    transition: all 1s ease;
+    transition: all 3s ease;
   }
 
   &.open {
@@ -462,17 +462,17 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
       border-radius: 0%;
     }
    li {
-      animation: fadeInRight .35s ease forwards;
-      animation-delay: .35s;
+      animation: fadeInRight 5s ease forwards;
+      animation-delay: .05s;
 
       &:nth-of-type(2) {
-        animation-delay: .45s;
+        animation-delay: 3s;
       }
       &:nth-of-type(3) {
-        animation-delay: .55s;
+        animation-delay: 3s;
       }
       &:nth-of-type(4) {
-        animation-delay: .55s;
+        animation-delay: 3s;
       }
     }
   }
@@ -526,7 +526,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
           transform: translateX(-50%);
           height: 0%;
           background: $def-color;
-          transition: all .5s;
+          transition: all 5s;
           z-index: -1;
           visibility: hidden;
         }

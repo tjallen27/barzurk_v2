@@ -23,10 +23,10 @@ body {
   font-size: 20px;
   letter-spacing: 5px;
   border-bottom: 1px solid rgba(192, 192, 192, 0);
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  transition: all 1s ease;
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  transition: all 0.35s ease;
   &:hover{
     border-bottom: 1px solid rgba(150, 150, 150, 0.5);
   }
@@ -437,7 +437,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
   opacity: 1;
   visibility: hidden;
   overflow: hidden;
-  transition: opacity 1s, visibility 1s, width 1s;
+  transition: opacity 0.5s, visibility 0.5s, width 0.5s;
 
 
   &:after {
@@ -449,7 +449,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
     height: 200%;
     position: fixed;
     border-radius: 100%;
-    transition: all 3s ease;
+    transition: all 0.5s ease;
   }
 
   &.open {
@@ -462,17 +462,17 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
       border-radius: 0%;
     }
    li {
-      animation: fadeInRight 5s ease forwards;
-      animation-delay: .05s;
+      animation: fadeInRight 0.35s ease forwards;
+      animation-delay: .5s;
 
       &:nth-of-type(2) {
-        animation-delay: 3s;
+        animation-delay: 0.75s;
       }
       &:nth-of-type(3) {
-        animation-delay: 3s;
+        animation-delay: 1s;
       }
       &:nth-of-type(4) {
-        animation-delay: 3s;
+        animation-delay: 1s;
       }
     }
   }
@@ -508,7 +508,7 @@ $shadow-active: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
       a {
         display: block;
         position: relative;
-        color: $def-color;
+        color: #fff;
         text-decoration: none;
         overflow: hidden;
         padding: 8px 15px;

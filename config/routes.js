@@ -1,6 +1,4 @@
-const express = require('express');
-const router  = express.Router();
-// const staticController = require('../controllers/static');
+const router = require('express').Router();
 const sessionsController = require('../controllers/sessions');
 const registrationsController = require('../controllers/registrations');
 const jobs = require('../controllers/jobs');

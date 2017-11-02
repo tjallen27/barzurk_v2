@@ -1,4 +1,4 @@
-<button class="btn go_back_btn">Go Back</button>
+
 <div class="container">
 
   <h1 class="user_show_header"><%= user.pubName %></h1>
@@ -24,7 +24,7 @@
 </div>
 
   <% if(!locals.isAuthenticated) { %>
-    <h5>Looking for...</h5>
+    <h5>We are currently looking for...</h5>
   <% } %>
 
   <% if(locals.isAuthenticated) { %>

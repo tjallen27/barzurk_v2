@@ -19,7 +19,7 @@ function sessionsCreate(req, res, next) {
       req.session.isAuthenticated = true;
       req.user = user;
 
-      req.flash('success', `Welcome back, ${user.pubName}!`);
+      req.flash('success', `Welcome Barzurk, ${user.pubName}!`);
       res.redirect(`/users/${user.id}`);
     })
     .catch(next);

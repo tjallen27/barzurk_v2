@@ -18,24 +18,22 @@ function createRoute(req, res, next) {
   }).then((response) => {
     req.body.address.lat = response.results[0].geometry.location.lat;
     req.body.address.lng = response.results[0].geometry.location.lng;
-  User
-  .create(req.body)
-  .then((user) => {
-    req.session.userId = user.id;
-    req.session.isAuthenticated = true;
-    req.user = user;
-
-    req.flash('success', `Welcome back, ${user.username}!`);
-    res.redirect(`/users/${user.id}`);
-  })
-  .catch((err) => {
-    if(err.name === 'ValidationError') {
-      req.flash('alert', 'Passwords do not match');
-      console.log(req.body);
-      return res.redirect('/');
-    }
-    next();
-  });
+    User
+    .create(req.body)
+    .then((user) => {
+      req.session.userId = user.id;
+      req.session.isAuthenticated = true;
+      req.user = user;
+      res.redirect('/login');
+    })
+    .catch((err) => {
+      if(err.name === 'ValidationError') {
+        req.flash('alert', 'Passwords do not match');
+        console.log(req.body);
+        return res.redirect('/');
+      }
+      next();
+    });
   });
 }
 

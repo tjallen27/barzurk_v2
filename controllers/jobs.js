@@ -24,6 +24,7 @@ function showRoute(req, res) {
     .then((job) => {
       if(!job) return res.status(404).send('Not found');
       res.render('jobs/show', { job });
+
     })
     .catch((err) => {
       res.status(500).end(err);
@@ -36,6 +37,7 @@ function createRoute(req, res) {
     .create(req.body)
     .then(() => {
       res.redirect(`/users/${req.user.id}`);
+      console.log(req.body);
     })
     .catch((err) => {
       res.status(500).end(err);

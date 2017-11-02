@@ -1,4 +1,5 @@
 const Job = require('../models/job');
+const User = require('../models/user');
 
 function indexRoute(req, res) {
   Job
@@ -35,8 +36,19 @@ function createRoute(req, res) {
   req.body.createdBy = req.user;
   Job
     .create(req.body)
-    .then(() => {
-      res.redirect(`/users/${req.user.id}`);
+    .then((thisJob) => {
+      User
+        .findById(thisJob.createdBy._id)
+        .exec()
+        .then((thisUser)=>{
+          thisUser.job.push(thisJob.id);
+          thisUser.save();
+          console.log('this user',thisUser);
+          console.log('this job',thisJob);
+        })
+        .then(()=> {
+          res.redirect(`/users/${req.user.id}`);
+        });
       console.log(req.body);
     })
     .catch((err) => {

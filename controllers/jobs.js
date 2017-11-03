@@ -35,20 +35,19 @@ function showRoute(req, res) {
 
 function createRoute(req, res) {
   req.body.createdBy = req.user;
-  Job 
+  Job
     .create(req.body)
     .then((thisJob) => {
       User
         .findById(thisJob.createdBy._id)
         .exec()
         .then((thisUser)=>{
-          if (!Array.isArray(thisUser.job)) {
-            thisUser.job = [];
+          if (!Array.isArray(thisUser.jobs)) {
+            thisUser.jobs = [];
           }
-          thisUser.job.push(thisJob.id);
+          thisUser.jobs.push(thisJob.id);
           thisUser.save();
-          console.log('this user',thisUser);
-          console.log('this job',thisJob);
+          // console.log('this user',thisUser);
         })
         .then(()=> {
           res.redirect(`/users/${req.user.id}`);

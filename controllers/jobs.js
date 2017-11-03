@@ -35,7 +35,7 @@ function showRoute(req, res) {
 
 function createRoute(req, res) {
   req.body.createdBy = req.user;
-  Job
+  Job 
     .create(req.body)
     .then((thisJob) => {
       User

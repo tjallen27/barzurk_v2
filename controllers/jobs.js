@@ -37,16 +37,23 @@ function createRoute(req, res) {
   req.body.createdBy = req.user;
   Job
     .create(req.body)
-    .then((response) => {
-      console.log(response);
-      User.findById(req.params.id)
-      .exec()
-      .then((job)=> {
-        console.log(job);
-        // user.tom(response._id);
-        return null;
-      });
-      res.redirect(`/users/${req.user.id}`);
+    .then((thisJob) => {
+      User
+        .findById(thisJob.createdBy._id)
+        .exec()
+        .then((thisUser)=>{
+          if (!Array.isArray(thisUser.job)) {
+            thisUser.job = [];
+          }
+          thisUser.job.push(thisJob.id);
+          thisUser.save();
+          console.log('this user',thisUser);
+          console.log('this job',thisJob);
+        })
+        .then(()=> {
+          res.redirect(`/users/${req.user.id}`);
+        });
+      console.log(req.body);
     })
     .catch((err) => {
       res.status(500).end(err);

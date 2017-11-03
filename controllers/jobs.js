@@ -1,4 +1,5 @@
 const Job = require('../models/job');
+const User = require('../models/user');
 
 function indexRoute(req, res) {
   Job
@@ -29,15 +30,23 @@ function showRoute(req, res) {
     .catch((err) => {
       res.status(500).end(err);
     });
+
 }
 
 function createRoute(req, res) {
   req.body.createdBy = req.user;
   Job
     .create(req.body)
-    .then(() => {
+    .then((response) => {
+      console.log(response);
+      User.findById(req.params.id)
+      .exec()
+      .then((job)=> {
+        console.log(job);
+        // user.tom(response._id);
+        return null;
+      });
       res.redirect(`/users/${req.user.id}`);
-      console.log(req.body);
     })
     .catch((err) => {
       res.status(500).end(err);

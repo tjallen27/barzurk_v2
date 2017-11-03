@@ -28,9 +28,17 @@
   <% } %>
 
   <% if(locals.isAuthenticated) { %>
-    <h5>Your Jobs:</h5>
+    <h6>Your Jobs:</h6>
   <% } %>
-
+  <% if(locals.isAuthenticated) { %>
+    <ul>
+      <li>
+        <a href="/jobs/new" class="button">
+          <button class="btn btn-primary add_job_btn">Add New Job</button>
+        </a>
+      </li>
+    </ul>
+  <% } %>
   <div class="row ">
     <% jobs.forEach((job) => { %>
       <ul class="col-md-12 col-lg-6 job">
@@ -53,13 +61,5 @@
         </ul>
     <% }); %>
   </div>
-    <% if(locals.isAuthenticated) { %>
-  <ul>
-    <li>
-      <a href="/jobs/new" class="button">
-        <button class="btn btn-primary add_job_btn">Add New Job</button>
-      </a>
-    </li>
-  </ul>
-  <% } %>
+
 </div>

@@ -15,10 +15,7 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true},
   phone: {type: String, required: true},
   password: {type: String, required: true},
-  job: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'Job'
-  }]
+  jobs: [{ type: mongoose.Schema.ObjectId, ref: 'Job' }]
 });
 
 userSchema
@@ -47,6 +44,10 @@ userSchema.pre('save', function hashPassword(next) {
 
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
+};
+
+userSchema.methods.tom = function tom(password) {
+  return console.log('Tom', password);
 };
 
 //'User' specifies the collection where each user is stored.

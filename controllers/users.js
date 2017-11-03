@@ -18,9 +18,12 @@ function showRoute(req, res, next){
     .find({ createdBy: user.id })
     .exec()
     .then((jobs)=>{
-      return res.render('users/show', { user, jobs });
+      res.render('users/show', { user, jobs });
+      return null;
     });
+    return null;
   })
+
   .catch(next);
 }
 

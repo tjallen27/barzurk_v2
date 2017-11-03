@@ -11,17 +11,17 @@ function indexRoute(req, res, next) {
 
 function showRoute(req, res, next){
   User
-  .findById(req.params.id)
-  .exec()
-  .then((user)=>{
-    Job
-    .find({ createdBy: user.id })
+    .findById(req.params.id)
     .exec()
-    .then((jobs)=>{
-      return res.render('users/show', { user, jobs });
-    });
-  })
-  .catch(next);
+    .then((user)=>{
+      Job
+        .find({ createdBy: user.id })
+        .exec()
+        .then((jobs)=>{
+          return res.render('users/show', { user, jobs });
+        });
+    })
+    .catch(next);
 }
 
 module.exports = {

@@ -100,10 +100,16 @@ function deleteRoute(req, res) {
     .then((job) => {
       if(!job) return res.status(404).send('Not found');
 
-      return job.remove();
-    })
-    .then(() => {
-      res.redirect(`/users/${req.user.id}`);
+      return job.remove()
+      .then((thisUser)=>{
+        if (!Array.isArray(thisUser.jobs)) {
+          thisUser.jobs = [];
+        }
+        thisUser.jobs.slice(job.id);
+        thisUser.save();
+        res.redirect(`/users/${req.user.id}`);
+      });
+
     })
     .catch((err) => {
       res.status(500).end(err);

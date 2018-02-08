@@ -93,27 +93,31 @@ function updateRoute(req, res) {
     });
 }
 
-function deleteRoute(req, res) {
+function deleteRoute(req, res, next) {
   Job
     .findById(req.params.id)
-    .exec()
     .then((job) => {
-      if(!job) return res.status(404).send('Not found');
-
-      return job.remove()
-      .then((thisUser)=>{
-        if (!Array.isArray(thisUser.jobs)) {
-          thisUser.jobs = [];
-        }
-        thisUser.jobs.slice(job.id);
-        thisUser.save();
-        res.redirect(`/users/${req.user.id}`);
-      });
-
+      if(!job) return res.notFound();
+      return job.remove();
     })
-    .catch((err) => {
-      res.status(500).end(err);
-    });
+    .then((job) => {
+      console.log(job);
+      User
+      .findById(req.user.id)
+      .then((thisUser)=>{
+        const index = thisUser.jobs[thisUser.jobs.length-1];
+        console.log('job deleted:' + index);
+        if (index === thisUser.jobs[thisUser.jobs.length-1]) {
+          thisUser.jobs.splice(index, 1);
+          return thisUser.save();
+        }
+      });
+    })
+    .then(() => {
+      res.redirect(`/users/${req.user.id}`);
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
 }
 
 module.exports = {

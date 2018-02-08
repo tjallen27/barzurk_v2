@@ -58,24 +58,23 @@ $(()=>{
 
     const users = $('#map').data('users');
     function addMarkers(){
-
       users.forEach(function(user){
-        if( parseInt(user.jobs.length) >= 1 ){
-          const marker = new google.maps.Marker({
-            position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
-            map: map,
-            icon: '../assets/images/marker2.png'
-          });
-        } else {
-          return false;
-        }
+        if(user.__v.length > 0 ){
+          users.forEach(function(user){
+            const marker = new google.maps.Marker({
+              position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
+              map: map,
+              icon: '../assets/images/marker2.png'
+            });
 
-        google.maps.event.addListener(marker, 'click', function() {
-          location.href =`users/${user._id}`;
-        });
-        marker.addListener('mouseover', () => {
-          markerClick(marker, user);
-        });
+            google.maps.event.addListener(marker, 'click', function() {
+              location.href =`users/${user._id}`;
+            });
+            marker.addListener('mouseover', () => {
+              markerClick(marker, user);
+            });
+          });
+        }
       });
     }
     addMarkers();

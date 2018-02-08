@@ -59,7 +59,8 @@ $(()=>{
     const users = $('#map').data('users');
     function addMarkers(){
       users.forEach(function(user){
-        if(user.__v.length > 0 ){
+        console.log(user);
+        if(user.jobs.length > 0 ){
           users.forEach(function(user){
             const marker = new google.maps.Marker({
               position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },

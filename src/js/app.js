@@ -58,12 +58,18 @@ $(()=>{
 
     const users = $('#map').data('users');
     function addMarkers(){
-      users.forEach((user) => {
-        const marker = new google.maps.Marker({
-          position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
-          map: map,
-          icon: '../assets/images/marker2.png' // Adding a custom icon
-        });
+
+      users.forEach(function(user){
+        if( parseInt(user.jobs.length) >= 1 ){
+          const marker = new google.maps.Marker({
+            position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
+            map: map,
+            icon: '../assets/images/marker2.png'
+          });
+        } else {
+          return false;
+        }
+
         google.maps.event.addListener(marker, 'click', function() {
           location.href =`users/${user._id}`;
         });

@@ -8,18 +8,32 @@ body {
   background-size: cover;
   text-align: center;
   z-index: 9;
-  height: 60vh;
+  height: 70vh;
   .landing-container {
     display: block;
     position: absolute;
     left: 50%;
-    top: 20%;
+    top: 15%;
     transform: translate(-50%);
+    ul {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+    a {
+      position: relative;
+      background: rgba(10, 250, 150, 1);
+      color: #fff;
+      border-radius: 20px;
+      border: none;
+      margin: 20px auto;
+      float: left;
+    }
   }
   h1 {
-    font-size: 5em;
+    margin: 50px 0 0;
+    font-size: 7em;
     color: #fff;
-    font-weight: lighter;
+    font-weight: bold;
   }
   h3 {
     font-size: 1.5em;
@@ -31,7 +45,7 @@ body {
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: center;
 }
 a {
@@ -47,9 +61,15 @@ main {
 }
 
 img {
-  width: 100%;
-  height: 100%;
+  display: block;
+  width: 50%;
+  height: 50%;
   border-radius: 10px;
+  margin: 0 auto;
+  text-align: center;
+}
+h5 {
+  text-align: center;
 }
 .main {
   max-width: 800px;
@@ -64,6 +84,19 @@ img {
   margin: 50px 0;
 }
 
+.col-6,
+.col-3 {
+  text-align: center;
+}
+.footer--container {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  img {
+    display: inline;
+    width: 20px;
+  }
+}
 .loader {
   position: absolute;
   left: 50%;
@@ -74,7 +107,7 @@ img {
 
 #map {
   z-index: 0 !important;
-  height: 92% !important;
+  height: 100% !important;
   width: 100% !important;
   position: absolute !important;
 }
@@ -83,7 +116,6 @@ img {
   display: inline;
   text-align: center;
   float: left;
-  margin-bottom: 10px;
   cursor: pointer;
   font-family: 'Work Sans', sans-serif;
   color: #999;
@@ -193,13 +225,13 @@ img {
 }
 
 .slider {
-  padding-top: 5px;
+  padding: 25px 0 50px;
   background: -webkit-linear-gradient(top, rgba(255,255,255,1) 30%, rgba(255,255,255,0.09) 94%, rgba(231,56,39,0) 100%);
   position: absolute;
   z-index: 10;
   right: 0;
   width: 100%;
-  height: 20%;
+  height: 30%;
   text-align: center;
   .note {
     margin-top: 5px;

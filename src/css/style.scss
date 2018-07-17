@@ -4,7 +4,7 @@ body {
 }
 
 .landing-header {
-  background: rgba(10, 250, 150, 1);
+  background: rgba(10, 250, 150, 0.7);
   background-size: cover;
   text-align: center;
   z-index: 9;
@@ -21,7 +21,6 @@ body {
     }
     a {
       position: relative;
-      background: rgba(10, 250, 150, 1);
       color: #fff;
       border-radius: 20px;
       border: none;
@@ -43,7 +42,6 @@ body {
     text-transform: uppercase;
   }
 }
-
 p {
   font-size: 1.1em;
   text-align: center;
@@ -59,7 +57,6 @@ ul {
 main {
   color: #444;
 }
-
 img {
   display: block;
   width: 50%;
@@ -73,7 +70,7 @@ h5 {
 }
 .main {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 .container {
   margin-top: 0;
@@ -81,7 +78,7 @@ h5 {
 }
 
 .row {
-  margin: 50px 0;
+  margin: 50px 0 100px;
 }
 
 .col-6,
@@ -89,9 +86,11 @@ h5 {
   text-align: center;
 }
 .footer--container {
+  z-index: 10;
   text-align: center;
   padding: 20px;
   font-size: 18px;
+  bottom: 0;
   img {
     display: inline;
     width: 20px;
@@ -104,14 +103,12 @@ h5 {
   transform: translate(-50%);
   z-index: -999;
 }
-
 #map {
   z-index: 0 !important;
   height: 100% !important;
   width: 100% !important;
   position: absolute !important;
 }
-
 .btn {
   display: inline;
   text-align: center;
@@ -133,11 +130,9 @@ h5 {
     outline: none;
   }
 }
-
 .add_job_btn {
   float: none;
 }
-
 .title_dropdown {
   background: white;
   border: none;
@@ -145,44 +140,22 @@ h5 {
   font-family: 'Work Sans', sans-serif;
   font-size: 18px;
 }
-
-.go_back_btn {
-  padding: 5px;
-  margin-left: 15px;
-  float: none;
-  font-size: 18px;
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid rgba(192, 192, 192, 0);
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  transition: all 1s ease;
-  &:hover {
-    border: none;
-    border-bottom: 1px solid rgba(150, 150, 150, 1);
-  }
-}
-
 .bg-faded {
-  background-color: rgba(250, 250, 250, 0.3);
+  background-color: rgba(250, 250, 250, 1);
 }
-
 .user_show_header {
   color: rgba(10, 250, 150, 1);
   font-size: 48px;
   margin-bottom: 20px;
 }
-
 .user_show_contact {
   margin-bottom: 50px;
 }
-
 .user-address li p {
   margin-bottom: 0;
 }
-
 .form-control {
+  padding: 10px;
   margin-bottom: 10px;
   border-radius: 0;
   border-top: none;
@@ -197,33 +170,10 @@ h5 {
     border-bottom: 1px solid rgba(10, 250, 150, 0.6);
   }
 }
-
 .info {
   color: #222;
   font-size: 18px;
 }
-
-.find_me {
-  z-index: 1000;
-  position: absolute;
-  font-family: 'Work Sans', sans-serif;
-  color: #999;
-  margin: 20px 20px 0 0;
-  right: 0;
-  font-size: 24px;
-  background: rgba(250, 250, 250, 0.7);
-  border: 2px solid  rgba(50, 50, 50, 0.2);
-  outline: none;
-  &:hover,
-  &:active,
-  &:focus {
-    color: #999;
-    background: rgba(250, 250, 250, 0.9);
-    border: 2px solid  rgba(10, 250, 150, 0.6);
-    outline: none;
-  }
-}
-
 .slider {
   padding: 25px 0 50px;
   background: -webkit-linear-gradient(top, rgba(255,255,255,1) 30%, rgba(255,255,255,0.09) 94%, rgba(231,56,39,0) 100%);
@@ -245,7 +195,6 @@ h5 {
     }
   }
 }
-
 // SLIDER //
 input[type=range] {
   -webkit-appearance: none;
@@ -284,7 +233,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   text-align: left;
   font-size: 18px;
 }
-
 .success {
   padding: 20px 25px;
   background: rgba(10, 250, 150, 0.6);
@@ -293,21 +241,17 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     z-index: 1000;
   }
 }
-
 .job a {
   color: rgba(10, 250, 150, 1);
 }
-
 .job-desc {
   text-align: justify;
 }
-
 .infowindow p {
   font-family: 'Work Sans', sans-serif;
   font-size: 20px !important;
   margin-bottom: 0;
 }
-
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   .landing-header {
     h1 {
@@ -316,13 +260,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     h3 {
       font-size: 2em;
     }
-  }
-  .navbar-nav {
-    width: 50%;
-    margin: 0 auto;
-  }
-  .nav-link a {
-    margin: 0 auto;
   }
 }
 
@@ -335,26 +272,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
       font-size: 1.5em;
     }
   }
-
   .container {
     padding: 5px;
   }
-
   ul {
     padding: 0;
   }
-
-  .navbar-toggleable-md .navbar-collapse {
-    width: 100%;
-  }
-
-  .nav-link {
-    text-align: left;
-    margin-right: 15px;
-    margin-left: 15px;
-  }
 }
-
 .alert {
     text-align: center;
     position: absolute;

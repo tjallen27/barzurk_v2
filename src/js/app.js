@@ -58,27 +58,27 @@ $(()=>{
 
     const users = $('#map').data('users');
     function addMarkers(){
-        users.forEach(function(user){
-          if(user.jobs.length > 0 ){
-            console.log(user.jobs.length);
-            const marker = new google.maps.Marker({
-              position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
-              map: map,
-              icon: '../assets/images/marker2.png'
-            });
+      users.forEach(function(user){
+        if(user.jobs.length > 0 ){
+          console.log(user.jobs.length);
+          const marker = new google.maps.Marker({
+            position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
+            map: map,
+            icon: '../assets/images/marker2.png'
+          });
 
-            google.maps.event.addListener(marker, 'click', function() {
-              location.href =`users/${user._id}`;
-            });
-            marker.addListener('mouseover', () => {
-              markerClick(marker, user);
-            });
-          } else {
-            console.log('this User doesnt have any jobs');
-            return null;
-          }
-        });
-      }
+          google.maps.event.addListener(marker, 'click', function() {
+            location.href =`users/${user._id}`;
+          });
+          marker.addListener('mouseover', () => {
+            markerClick(marker, user);
+          });
+        } else {
+          console.log('this User doesnt have any jobs');
+          return null;
+        }
+      });
+    }
     addMarkers();
   }
 

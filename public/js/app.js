@@ -10,7 +10,7 @@ $(function () {
     $('main').toggleClass('hide');
   });
 
-  console.log('JS loaded!');
+  console.log('JS loaded!!');
 
   var $map = $('#map');
   var map = null;
@@ -61,17 +61,24 @@ $(function () {
     var users = $('#map').data('users');
     function addMarkers() {
       users.forEach(function (user) {
-        var marker = new google.maps.Marker({
-          position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
-          map: map,
-          icon: '../assets/images/marker2.png' // Adding a custom icon
-        });
-        google.maps.event.addListener(marker, 'click', function () {
-          location.href = 'users/' + user._id;
-        });
-        marker.addListener('mouseover', function () {
-          markerClick(marker, user);
-        });
+        if (user.jobs.length > 0) {
+          console.log(user.jobs.length);
+          var marker = new google.maps.Marker({
+            position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
+            map: map,
+            icon: '../assets/images/marker2.png'
+          });
+
+          google.maps.event.addListener(marker, 'click', function () {
+            location.href = 'users/' + user._id;
+          });
+          marker.addListener('mouseover', function () {
+            markerClick(marker, user);
+          });
+        } else {
+          console.log('this User doesnt have any jobs');
+          return null;
+        }
       });
     }
     addMarkers();
@@ -82,9 +89,8 @@ $(function () {
     // If there is an open infowindow on the map, close it
     if (infowindow) infowindow.close();
 
-    // Locate the data that we need from the individual bike object
+    // Locate the data that we need from the individual pub object
     var pubName = user.pubName;
-    console.log(pubName);
     // Update the infowindow variable to be a new Google InfoWindow
     infowindow = new google.maps.InfoWindow({
       content: '\n      <div class="infowindow">\n        <p>' + pubName + '</p>\n      </div>\n      '

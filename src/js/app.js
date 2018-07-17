@@ -8,7 +8,7 @@ $(()=>{
     $('main').toggleClass('hide');
   });
 
-  console.log('JS loaded!');
+  console.log('JS loaded!!');
 
   const $map = $('#map');
   let map = null;
@@ -58,10 +58,9 @@ $(()=>{
 
     const users = $('#map').data('users');
     function addMarkers(){
-      users.forEach(function(user){
-        console.log(user);
-        if(user.jobs.length > 0 ){
-          users.forEach(function(user){
+        users.forEach(function(user){
+          if(user.jobs.length > 0 ){
+            console.log(user.jobs.length);
             const marker = new google.maps.Marker({
               position: { lat: parseFloat(user.address.lat), lng: parseFloat(user.address.lng) },
               map: map,
@@ -74,10 +73,12 @@ $(()=>{
             marker.addListener('mouseover', () => {
               markerClick(marker, user);
             });
-          });
-        }
-      });
-    }
+          } else {
+            console.log('this User doesnt have any jobs');
+            return null;
+          }
+        });
+      }
     addMarkers();
   }
 
@@ -86,9 +87,8 @@ $(()=>{
     // If there is an open infowindow on the map, close it
     if(infowindow) infowindow.close();
 
-    // Locate the data that we need from the individual bike object
+    // Locate the data that we need from the individual pub object
     const pubName = user.pubName;
-    console.log(pubName);
     // Update the infowindow variable to be a new Google InfoWindow
     infowindow = new google.maps.InfoWindow({
       content: `

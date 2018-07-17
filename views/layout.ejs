@@ -3,13 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>project2</title>
+    <title>Barzurk</title>
     <% include ./partials/stylesheets %>
     <% include ./partials/scripts %>
   </head>
   <body>
-
-    <% include ./partials/nav %>
     <% for(const type in messages) { %>
       <div class="<%= type %>">
         <h5><%= messages[type] %></h5>

@@ -2,7 +2,7 @@ const User = require('../models/user');
 const rp = require('request-promise');
 
 function newRoute(req, res) {
-  return res.render('registrations/new'); // this will never be used - grow some balls and delete it!
+  return res.render('registrations/new'); 
 }
 
 // CREATE a new user
@@ -19,21 +19,21 @@ function createRoute(req, res, next) {
     req.body.address.lat = response.results[0].geometry.location.lat;
     req.body.address.lng = response.results[0].geometry.location.lng;
     User
-    .create(req.body)
-    .then((user) => {
-      req.session.userId = user.id;
-      req.session.isAuthenticated = true;
-      req.user = user;
-      res.redirect('/login');
-    })
-    .catch((err) => {
-      if(err.name === 'ValidationError') {
-        req.flash('alert', 'Passwords do not match');
-        console.log(req.body);
-        return res.redirect('/');
-      }
-      next();
-    });
+      .create(req.body)
+      .then((user) => {
+        req.session.userId = user.id;
+        req.session.isAuthenticated = true;
+        req.user = user;
+        res.redirect('/login');
+      })
+      .catch((err) => {
+        if(err.name === 'ValidationError') {
+          req.flash('alert', 'Passwords do not match');
+          console.log(req.body);
+          return res.redirect('/');
+        }
+        next();
+      });
   });
 }
 

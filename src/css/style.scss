@@ -3,6 +3,28 @@ body {
   font-weight: 200;
   margin: 0 auto;
 }
+
+.navbar {
+  color: #fff;
+  background: rgba(10, 250, 150, 0.7);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px auto;
+    ul {
+      max-width: 166px;
+      margin: 0 auto;
+      padding: 10px;
+      position: relative;
+      li {
+        display: inline;
+        margin: 20px 10px;
+        a {
+          color: #fff;
+        }
+      }
+    }
+}
+
 .landing-header {
   position: relative;
   background: rgba(10, 250, 150, 0.7);
@@ -16,12 +38,12 @@ body {
   a {
     color: #fff;
   }
-  nav {
-    max-width: 800px;
+  nav{
+    max-width: 150px;
+    margin: 0 auto;
     padding: 10px auto;
     ul {
       padding: 10px;
-      width: 150px;
       position: relative;
       float: right;
       li {
@@ -97,8 +119,11 @@ h5 {
 }
 
 .col-md-4 {
-  height: 300px;
   text-align: center;
+}
+.landing-col.col-md-4 {
+  text-align: center;
+  height: 300px;
 }
 
 .footer--container {
@@ -185,7 +210,6 @@ h5 {
   margin-bottom: 0;
 }
 .form-control {
-  padding: 10px;
   margin-bottom: 10px;
   border-radius: 0;
   border-top: none;
